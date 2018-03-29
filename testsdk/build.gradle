@@ -37,54 +37,54 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 //项目主页
-def siteUrl = 'https://github.com/liveLC1993/xinge'    // project homepage
+def siteUrl = 'https://github.com/forwardto9/Demo'    // project homepage
 //项目的版本控制地址
-def gitUrl = 'https://github.com/liveLC1993/xinge.git' // project git
+def gitUrl = 'https://github.com/forwardto9/Demo.git' // project git
 
 //发布到组织名称名字，必须填写
 group = "com.tencent.xinge"
 //发布到JCenter上的项目名字，必须填写
-def libName = "tencent-xinge"
+def libName = "testsdk"
 // 版本号，下次更新是只需要更改版本号即可./gradlew install
-version = "3.2.2.1-beta"
+version = "1.0.0"
 /**  上面配置后上传至jcenter后的编译路径是这样的： compile 'ccom.tencent.xinge:xinge:1.1.1-alpha'  **/
 
 //生成源文件
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
 //生成文档
-task javadoc(type: Javadoc) {
-
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    options.encoding "UTF-8"
-    options.charSet 'UTF-8'
-    options.author true
-    options.version true
-    options.links "https://xg.qq.com"
-    failOnError false
-}
+//task javadoc(type: Javadoc) {
+//
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    options.encoding "UTF-8"
+//    options.charSet 'UTF-8'
+//    options.author true
+//    options.version true
+//    options.links "https://xg.qq.com"
+//    failOnError false
+//}
 
 //文档打包成jar
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
 
 //拷贝javadoc文件
-task copyDoc(type: Copy) {
-    from "${buildDir}/docs/"
-    into "docs"
-}
+//task copyDoc(type: Copy) {
+//    from "${buildDir}/docs/"
+//    into "docs"
+//}
 
 
 //上传到jcenter所需要的源码文件
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
 
 //上传到jcenter
 
@@ -99,8 +99,8 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "tencent-xinge"  //发布到JCenter上的项目名字，必须填写
-        desc = 'This is a project of xinge '    //项目描述
+        name = "testsdk"  //发布到JCenter上的项目名字，必须填写
+        desc = 'This is a project of test '    //项目描述
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]

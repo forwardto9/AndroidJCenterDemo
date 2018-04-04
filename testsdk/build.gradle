@@ -50,41 +50,41 @@ version = "1.0.0"
 /**  上面配置后上传至jcenter后的编译路径是这样的： compile 'ccom.tencent.xinge:xinge:1.1.1-alpha'  **/
 
 //生成源文件
-//task sourcesJar(type: Jar) {
-//    from android.sourceSets.main.java.srcDirs
-//    classifier = 'sources'
-//}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
 //生成文档
-//task javadoc(type: Javadoc) {
-//
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//    options.encoding "UTF-8"
-//    options.charSet 'UTF-8'
-//    options.author true
-//    options.version true
-//    options.links "https://xg.qq.com"
-//    failOnError false
-//}
+task javadoc(type: Javadoc) {
+
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
+    options.author true
+    options.version true
+    options.links "https://xg.qq.com"
+    failOnError false
+}
 
 //文档打包成jar
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
 
 //拷贝javadoc文件
-//task copyDoc(type: Copy) {
-//    from "${buildDir}/docs/"
-//    into "docs"
-//}
+task copyDoc(type: Copy) {
+    from "${buildDir}/docs/"
+    into "docs"
+}
 
 
 //上传到jcenter所需要的源码文件
-//artifacts {
-//    archives javadocJar
-//    archives sourcesJar
-//}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
 
 //上传到jcenter
 
